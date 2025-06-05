@@ -1,17 +1,34 @@
-import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View
- } from 'react-native';
+import { useEffect, useState } from 'react';
+import {
+  StyleSheet, View
+} from 'react-native';
+
+ const audioSource = require('../assets/sounds/click.mp3');
+
+ import { Audio } from 'expo-av';
 
  import IconMaterialIcons from '@expo/vector-icons/MaterialIcons';
 
-import TimeButton from '../components/timeButton';
 import ConfigButton from '../components/configButton';
+import TimeButton from '../components/timeButton';
+
 
 export default function App() {
 
-  let initialTimePlayer1 = 300;
-  let initialTimePlayer2 = 300;
+  const playClickSound = async () => {
+    const { sound } = await Audio.Sound.createAsync(audioSource);
+    await sound.playAsync();
+    // Libera recursos después de reproducir
+    sound.setOnPlaybackStatusUpdate(status => {
+      if (status.didJustFinish) {
+        sound.unloadAsync();
+      }
+    });
+  };
+
+  let initialTimePlayer1 = 3;
+  let initialTimePlayer2 = 3;
 
   const [stylePlayer1, setStylePlayer1] = useState(styles.inactivo)
   const [stylePlayer2, setStylePlayer2] = useState(styles.inactivo)
@@ -27,7 +44,8 @@ export default function App() {
 
     useEffect(() => {
       let intervalId;
-
+      setStyle();
+      
   if (contadorPlayer1) {
     intervalId = setInterval(() => {
       setTiempoPlayer1(prev => prev - 1);
@@ -38,27 +56,30 @@ export default function App() {
       setTiempoPlayer2(prev => prev - 1);
     }, 1000);
   }
-  setStyle();
 
   return () => clearInterval(intervalId);
 
-  }, [contadorPlayer1, contadorPlayer2]);
+  }, [contadorPlayer1, contadorPlayer2, tiempoPlayer1, tiempoPlayer2]);
 
   const initCounterPlayer1 = () => {
     if(!contadorPlayer2 && !contadorPlayer1){
       setContadorPlayer1(true);
+      playClickSound();
     }else if(contadorPlayer2){
       setContadorPlayer2(false);
       setContadorPlayer1(true);
+      playClickSound();
     }
   }
 
   const initCounterPlayer2 = () => {
     if(!contadorPlayer2 && !contadorPlayer1){
       setContadorPlayer2(true);
+      playClickSound();
     }else if(contadorPlayer1){
       setContadorPlayer1(false);
       setContadorPlayer2(true);
+      playClickSound();
   }
 }
 
@@ -93,16 +114,7 @@ const formatTime = (seconds) => {
 }
 
 const setStyle = () => {
-  if(tiempoPlayer1 == 0){
-    playPause();
-    setStylePlayer1(styles.lose);
-  }
   
-  if(tiempoPlayer2 == 0){
-    playPause();
-    setStylePlayer2(styles.lose);
-  }
-
   if(contadorPlayer1){
     setStylePlayer1(styles.activo);
   }else{
@@ -114,6 +126,25 @@ const setStyle = () => {
   }else{
     setStylePlayer2(styles.inactivo);
   }
+
+  if(tiempoPlayer1 == 0){
+    setMemoriPlayer1(false);
+    setMemoriPlayer2(false);
+    setContadorPlayer1(false);
+    setContadorPlayer2(false);
+    setStylePlayer1(styles.lose);
+    setStylePlayer2(styles.activo);
+  }
+  
+  if(tiempoPlayer2 == 0){
+    setMemoriPlayer1(false);
+    setMemoriPlayer2(false);
+    setContadorPlayer1(false);
+    setContadorPlayer2(false);
+    setStylePlayer2(styles.lose);
+    setStylePlayer1(styles.activo);
+  }
+
 }
 
 
@@ -185,7 +216,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#8b8c82'
   },
   lose: {
-    backgroundColor: '#red'
+    backgroundColor: '#F22D1B'
   }
   
 });
