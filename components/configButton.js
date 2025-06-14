@@ -1,5 +1,5 @@
-import React, { Children } from "react";
-import { Text, Pressable, StyleSheet, View } from 'react-native';
+import React from "react";
+import { Pressable, StyleSheet } from 'react-native';
 
 export default function ConfigButton({
   onPress,
@@ -7,7 +7,7 @@ export default function ConfigButton({
 }) {
   return (
     <Pressable style={styles.button} onPress={onPress}>
-    {children}
+      {children}
     </Pressable>
   );
 }

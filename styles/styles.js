@@ -28,6 +28,13 @@ const styles = StyleSheet.create({
     },
     lose: {
       backgroundColor: '#F22D1B'
+    },
+    navigationBarEditTime: {
+      backgroundColor: 'red',
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      alignItems: 'center', 
+      width: '100%'
     }
     
   });
