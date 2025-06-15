@@ -5,6 +5,7 @@ import { View } from 'react-native';
 
 import IconMaterialIcons from '@expo/vector-icons/MaterialIcons';
 import ConfigButton from '../components/configButton';
+import showConfirmDialog from '../components/showConfirmDialog';
 import TimeButton from '../components/timeButton';
 import styles from '../styles/styles';
 import changeIconPlayPause from '../utils/changeIconPlayPause';
@@ -77,7 +78,26 @@ export default function App() {
 
         <View style={styles.menu}>
 
-          <ConfigButton title='Reset' onPress={() => reset(setMemoriPlayer1, setMemoriPlayer2, setContadorPlayer1, setContadorPlayer2, setTiempoPlayer1, setTiempoPlayer2, initialTimePlayer1, initialTimePlayer2)}>
+          <ConfigButton
+            title='Reset'
+            onPress={() =>
+              showConfirmDialog(
+                'Desea reiniciar el reloj?',
+                'Confirme para reiniciar el reloj',
+                () => reset(
+                  setMemoriPlayer1,
+                  setMemoriPlayer2,
+                  setContadorPlayer1,
+                  setContadorPlayer2,
+                  setTiempoPlayer1,
+                  setTiempoPlayer2,
+                  initialTimePlayer1,
+                  initialTimePlayer2
+                )
+              )
+            }
+          >
+
             <IconMaterialIcons name="restart-alt" size={sizeIcons} color={colorIcons} />
           </ConfigButton>
           <ConfigButton title='Play/Pause' onPress={() => playPause(contadorPlayer1, contadorPlayer2, setMemoriPlayer1, setMemoriPlayer2, setContadorPlayer1, setContadorPlayer2, memoriPlayer1, memoriPlayer2)}>
