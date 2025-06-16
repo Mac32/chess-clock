@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import updateData from './updateData';
 
-const setTimeGame = async (dataPresets, setDataPresetsState, setInitialTimePlayer1, setInitialTimePlayer2, setTimePlayer1, setTimePlayer2) => {
+const setTimeGame = async (dataPresets, setInitialTimePlayer1, setInitialTimePlayer2, setTimePlayer1, setTimePlayer2) => {
   
   let initial = 0
   dataPresets.map((preset, i) => {
@@ -19,7 +19,7 @@ const setTimeGame = async (dataPresets, setDataPresetsState, setInitialTimePlaye
       setTimePlayer2(initial);
 
     } catch (e) {
-      console.log('ocurrio un error al setiar: ' + e)
+      console.log('ocurrio un error al setiar en setTimeGame: ' + e)
     }
   }
   update()
