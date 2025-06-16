@@ -1,13 +1,29 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from 'expo-router';
+import updateData from './updateData';
 
-const setTimeGame = async (time) => {
+const setTimeGame = async (dataPresets, setDataPresetsState, setInitialTimePlayer1, setInitialTimePlayer2, setTimePlayer1, setTimePlayer2) => {
+  
+  let initial = 0
+  dataPresets.map((preset, i) => {
+    if (preset.select) {
+      initial = parseInt(preset.time) * 60
+    }
+  });
+  const update = async () => {
+    try {
 
-  try {
-    await AsyncStorage.setItem('initialPlayerTime', `${time}`);
+      await updateData(dataPresets, initial);
+      setInitialTimePlayer1(initial);
+      setInitialTimePlayer2(initial);
+      setTimePlayer1(initial);
+      setTimePlayer2(initial);
 
-  } catch (error) {
-    console.error('Error al actualizar datos:', error);
+    } catch (e) {
+      console.log('ocurrio un error al setiar: ' + e)
+    }
   }
+  update()
+  router.back()
 };
 
 export default setTimeGame;

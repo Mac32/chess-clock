@@ -2,7 +2,7 @@ import { View } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import OnlyOneActiveCheckbox from "../utils/onlyOneActiveCheckbox";
 
-export default function ToggleButton({ isActive, item, dataPresetsState, setDataPresetsState, index}) {
+export default function ToggleButton({ isActive, dataPresetsState, setDataPresetsState, index}) {
     return (
         <View>
             <BouncyCheckbox

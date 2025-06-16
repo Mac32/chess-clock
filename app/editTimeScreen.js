@@ -1,30 +1,28 @@
 import IconMaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import ConfigButton from '../components/configButton';
 import ToggleButton from '../components/toggleButton';
-import dataPresets from '../constants/dataPresets';
+import { TiempoContext } from '../context/timeContext';
 import styles from '../styles/styles';
-import getData from '../utils/getData';
+import setTimeGame from '../utils/setTimeGame';
 
 const colorIcons = '#8b8c82';
-const sizeIcons = 35;
+const sizeIcons = 45;
 
 export default function EditTimeScreen() {
 
-  const [dataPresetsState, setDataPresetsState] = useState();
+  const [] = useState();
+  const {
+    dataPresetsState, 
+    setDataPresetsState, 
+    setInitialTimePlayer1, 
+    setInitialTimePlayer2,
+    setTimePlayer1,
+    setTimePlayer2 
+  } = useContext(TiempoContext);
 
-  useEffect(
-    () => {
-
-      const data = async () => {
-        getData('dataPresets', dataPresets).then(data => setDataPresetsState(JSON.parse(data)));
-      }
-      data();
-
-    },[])
-
-    useEffect(() => {
+  useEffect(() => {
   }, [dataPresetsState])
 
   return (
@@ -55,14 +53,14 @@ export default function EditTimeScreen() {
           <View style={stylesEditTime.container}>
             <Text>{item.time} min</Text>
             {item.add !== 0 && <Text> | {item.add} sec</Text>}
-            <ToggleButton isActive={item.select} item={item} index={index} dataPresetsState={dataPresetsState} setDataPresetsState={setDataPresetsState} />
+            <ToggleButton isActive={item.select} index={index} dataPresetsState={dataPresetsState} setDataPresetsState={setDataPresetsState} />
           </View>
         }
         keyExtractor={(item, index) => index.toString()}
       />
       <View>
-        <Pressable title='Iniciar' onPress={() => alert('tiempo Iniciado')}>
-          <Text>Iniciar</Text>
+        <Pressable title='Iniciar' onPress={() => setTimeGame(dataPresetsState, setInitialTimePlayer1, setInitialTimePlayer2, setTimePlayer1, setTimePlayer2)}>
+          <Text style={stylesEditTime.button} >Iniciar</Text>
         </Pressable>
       </View>
     </View>
@@ -77,4 +75,16 @@ const stylesEditTime = StyleSheet.create({
     width: '100%',
     backgroundColor: '#fff',
   },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    paddingHorizontal: 145,
+    padding: 10,
+    elevation: 3,
+    backgroundColor: '#7ca453',
+    marginBottom: 50,
+    color: '#fff',
+    fontSize: 20
+  }
 });
