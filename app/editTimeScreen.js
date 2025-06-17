@@ -18,7 +18,9 @@ export default function EditTimeScreen() {
     setInitialTimePlayer2,
     setTimePlayer1,
     setTimePlayer2,
-    setIncrementTime
+    setIncrementTime,
+    setMovePlayer1,
+    setMovePlayer2
   } = useContext(TiempoContext);
 
   useEffect(() => {
@@ -67,7 +69,7 @@ export default function EditTimeScreen() {
         keyExtractor={(item, index) => index.toString()}
       />
       <View>
-        <Pressable title='Iniciar' onPress={() => setTimeGame(dataPresetsState, setInitialTimePlayer1, setInitialTimePlayer2, setTimePlayer1, setTimePlayer2, setIncrementTime)}>
+        <Pressable title='Iniciar' onPress={() => setTimeGame(dataPresetsState, setInitialTimePlayer1, setInitialTimePlayer2, setTimePlayer1, setTimePlayer2, setIncrementTime, setMovePlayer1, setMovePlayer2)}>
           <Text style={styles.buttonIniciar} >Iniciar</Text>
         </Pressable>
       </View>

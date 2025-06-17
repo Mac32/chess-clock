@@ -15,6 +15,8 @@ export function TiempoProvider({ children }) {
     const [timePlayer1, setTimePlayer1] = useState(initialTimePlayer1);
     const [timePlayer2, setTimePlayer2] = useState(initialTimePlayer2);
 
+    const [movePlayer1, setMovePlayer1] = useState(0);
+    const [movePlayer2, setMovePlayer2] = useState(0);
 
     useEffect(() => {
 
@@ -43,7 +45,7 @@ export function TiempoProvider({ children }) {
 
     return (
         <TiempoContext.Provider value={{
-            dataPresetsState, 
+            dataPresetsState,
             setDataPresetsState,
             initialTimePlayer1,
             setInitialTimePlayer1,
@@ -54,7 +56,11 @@ export function TiempoProvider({ children }) {
             timePlayer2,
             setTimePlayer2,
             incrementTime,
-            setIncrementTime
+            setIncrementTime,
+            movePlayer1,
+            setMovePlayer1,
+            movePlayer2,
+            setMovePlayer2
         }}>
             {children}
         </TiempoContext.Provider>

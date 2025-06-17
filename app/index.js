@@ -27,6 +27,10 @@ export default function App() {
     timePlayer2,
     setTimePlayer2,
     incrementTime,
+    movePlayer1,
+    setMovePlayer1,
+    movePlayer2,
+    setMovePlayer2
   } = useContext(TiempoContext);
 
   const [stylePlayer1, setStylePlayer1] = useState(styles.inactivo)
@@ -37,9 +41,6 @@ export default function App() {
 
   const [memoriPlayer1, setMemoriPlayer1] = useState(false);
   const [memoriPlayer2, setMemoriPlayer2] = useState(false);
-
-  const [movePlayer1, setMovePlayer1] = useState(0);
-  const [movePlayer2, setMovePlayer2] = useState(0);
 
   useEffect(() => {
   }, [movePlayer1, movePlayer2])
