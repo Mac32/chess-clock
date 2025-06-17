@@ -25,7 +25,8 @@ export default function App() {
     timePlayer1,
     setTimePlayer1,
     timePlayer2,
-    setTimePlayer2
+    setTimePlayer2,
+    incrementTime,
   } = useContext(TiempoContext);
 
   const [stylePlayer1, setStylePlayer1] = useState(styles.inactivo)
@@ -74,7 +75,7 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style="light" />
 
-      <TimeButton title={formatTime(timePlayer1)} style={stylePlayer1} onPress={() => initCounterPlayer2(contadorPlayer1, contadorPlayer2, setContadorPlayer1, setContadorPlayer2, audioSource)} />
+      <TimeButton title={formatTime(timePlayer1)} style={stylePlayer1} onPress={() => initCounterPlayer2(contadorPlayer1, contadorPlayer2, setContadorPlayer1, setContadorPlayer2, incrementTime, timePlayer1, timePlayer2, setTimePlayer1, audioSource)} />
 
       <View style={styles.configContainer} >
 
@@ -105,7 +106,7 @@ export default function App() {
         </View>
 
       </View>
-      <TimeButton title={formatTime(timePlayer2)} style={stylePlayer2} onPress={() => initCounterPlayer1(contadorPlayer1, contadorPlayer2, setContadorPlayer1, setContadorPlayer2, audioSource)} />
+      <TimeButton title={formatTime(timePlayer2)} style={stylePlayer2} onPress={() => initCounterPlayer1(contadorPlayer1, contadorPlayer2, setContadorPlayer1, setContadorPlayer2, incrementTime, timePlayer1, timePlayer2, setTimePlayer2, audioSource)} />
 
 
     </View>

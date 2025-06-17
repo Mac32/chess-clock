@@ -20,7 +20,6 @@ export default function setStyle(contadorPlayer1, contadorPlayer2, tiempoPlayer1
       setContadorPlayer1(false);
       setContadorPlayer2(false);
       setStylePlayer1(styles.lose);
-      setStylePlayer2(styles.activo);
     }
     
     if(tiempoPlayer2 == 0){
@@ -29,7 +28,6 @@ export default function setStyle(contadorPlayer1, contadorPlayer2, tiempoPlayer1
       setContadorPlayer1(false);
       setContadorPlayer2(false);
       setStylePlayer2(styles.lose);
-      setStylePlayer1(styles.activo);
     }
   
   }

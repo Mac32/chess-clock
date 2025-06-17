@@ -10,6 +10,8 @@ export function TiempoProvider({ children }) {
     const [initialTimePlayer1, setInitialTimePlayer1] = useState();
     const [initialTimePlayer2, setInitialTimePlayer2] = useState();
 
+    const [incrementTime, setIncrementTime] = useState(0);
+
     const [timePlayer1, setTimePlayer1] = useState(initialTimePlayer1);
     const [timePlayer2, setTimePlayer2] = useState(initialTimePlayer2);
 
@@ -24,11 +26,14 @@ export function TiempoProvider({ children }) {
         const initialtime = async () => {
             try {
 
-                const data = await getData('initialTime', 600);
-                setTimePlayer1(parseInt(data));
-                setTimePlayer2(parseInt(data));
-                setInitialTimePlayer1(parseInt(data));
-                setInitialTimePlayer2(parseInt(data));
+                getData('initialTime', 600).then(data => {
+                    setTimePlayer1(parseInt(data));
+                    setTimePlayer2(parseInt(data));
+                    setInitialTimePlayer1(parseInt(data));
+                    setInitialTimePlayer2(parseInt(data));
+                })
+
+                getData('incrementTime', 0).then(data => setIncrementTime(parseInt(data)));
             } catch (error) {
                 console.error('Error al obtener datos:', error);
             }
@@ -47,7 +52,9 @@ export function TiempoProvider({ children }) {
             timePlayer1,
             setTimePlayer1,
             timePlayer2,
-            setTimePlayer2
+            setTimePlayer2,
+            incrementTime,
+            setIncrementTime
         }}>
             {children}
         </TiempoContext.Provider>
