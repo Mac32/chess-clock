@@ -1,6 +1,7 @@
 import IconMaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { router } from 'expo-router';
 import { useContext, useEffect } from 'react';
-import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Pressable, Text, View } from 'react-native';
 import ConfigButton from '../components/configButton';
 import ToggleButton from '../components/toggleButton';
 import { userConfig } from '../constants/userConfig';
@@ -17,7 +18,6 @@ export default function EditTimeScreen() {
     setInitialTimePlayer2,
     setTimePlayer1,
     setTimePlayer2,
-    incremetTime,
     setIncrementTime
   } = useContext(TiempoContext);
 
@@ -28,7 +28,12 @@ export default function EditTimeScreen() {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#322e2a' }}>
 
       <View style={styles.navigationBarEditTime}>
-        <Text style={{ color: userConfig.textColor, fontSize: 20 }}>Time Controlls</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <ConfigButton title='Back' onPress={() => router.back()}>
+            <IconMaterialIcons name="arrow-back" size={userConfig.sizeIcons} color={userConfig.colorIcons} />
+          </ConfigButton>
+          <Text style={{ color: userConfig.textColor, fontSize: 20 }}>Time Controlls</Text>
+        </View>
         <View style={{ flexDirection: 'row' }}>
           <ConfigButton title='Time Edit' onPress={() => alert('edit')}>
             <IconMaterialIcons name="edit" size={userConfig.sizeIcons} color={userConfig.colorIcons} />
@@ -69,14 +74,3 @@ export default function EditTimeScreen() {
     </View>
   );
 }
-
-const stylesEditTime = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    width: '100%',
-    paddingLeft: 15,
-    marginVertical: 10
-  }
-});
