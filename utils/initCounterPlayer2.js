@@ -4,7 +4,6 @@ export default function initCounterPlayer2(contadorPlayer1, contadorPlayer2, set
 
   if (!contadorPlayer2 && !contadorPlayer1  && timePlayer1 > 0 && timePlayer2 > 0) {
     setContadorPlayer2(true);
-    setMovePlayer1(prev => prev + 1)
     playSound(audioSource);
   } else if (contadorPlayer1) {
     setTimePlayer1(timePlayer1 + incrementTime);

@@ -1,10 +1,12 @@
 import { StyleSheet } from "react-native";
 import { userConfig } from "../constants/userConfig";
 
+const colors = userConfig.colors
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: colors.black,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -12,40 +14,40 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '50%',
-    backgroundColor: '#322e2a'
+    backgroundColor: colors.grayPrimary
   },
   configContainer: {
     height: '10%',
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#322e2b',
+    backgroundColor: colors.grayPrimary,
     width: '100%'
   },
   activo: {
-    backgroundColor: userConfig.themColor
+    backgroundColor: colors.greenPrimery
   },
   inactivo: {
-    backgroundColor: '#8b8c82'
+    backgroundColor: colors.grayTerciary
   },
   lose: {
-    backgroundColor: '#F22D1B'
+    backgroundColor: colors.redPrimary
   },
   navigationBarEditTime: {
-    backgroundColor: '#524f4f',
+    backgroundColor: colors.grayPrimary,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
     width: '100%'
   },
   text: {
-    color: '#fff',
+    color: colors.white,
     fontSize: 20
   },
   buttonCreateNewTime: {
-    color: '#fff',
+    color: colors.white,
     fontSize: 20,
-    backgroundColor: userConfig.themColor,
+    backgroundColor: colors.greenPrimery,
     padding: 10,
     paddingHorizontal: 50,
     borderRadius: 20,
@@ -53,12 +55,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   textPresets: {
-    color: '#fff',
+    color: colors.white,
     fontSize: 20,
     fontWeight: '300',
     marginVertical: 10,
     fontStyle: "italic",
-    borderBottomColor: '#fff',
+    borderBottomColor: colors.white,
     borderBottomWidth: 1,
     paddingBottom: 2,
     width: '90',
@@ -74,16 +76,16 @@ const styles = StyleSheet.create({
     marginVertical: 9
   },
   buttonIniciar: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    textAlign: 'center',
+    textAlignVertical: 'center',
     borderRadius: 10,
-    paddingHorizontal: 145,
-    padding: 10,
+    minWidth: '85%',
+    paddingVertical: 12,
     elevation: 3,
-    backgroundColor: '#7ca453',
+    backgroundColor: colors.greenPrimery,
     marginBottom: 50,
-    color: '#fff',
-    fontSize: 20,
+    color: colors.white,
+    fontSize: userConfig.sizes.fontBig,
     fontWeight: 'bold'
   }
 

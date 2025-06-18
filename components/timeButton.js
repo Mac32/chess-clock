@@ -12,7 +12,8 @@ export default function TimeButton({
   initialTime,
   movePlayer,
   contadorPlayer1,
-  contadorPlayer2
+  contadorPlayer2,
+  setModalPlayer,
 }) {
   return (
     <Pressable onPress={onPress} style={[styles.button, style]}>
@@ -24,7 +25,7 @@ export default function TimeButton({
 
       {!contadorPlayer1 && !contadorPlayer2 ? (
         <View style={{ width: '90%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-          <Pressable onPress={() => alert('hola')}>
+          <Pressable onPress={() => setModalPlayer(true)}>
             <Entypo name="sound-mix" size={40} color={textColor} />
           </Pressable>
           <Text style={[styles.textInitialTime, textStyle, { color: textColor }]}>

@@ -7,9 +7,9 @@ export default function ToggleButton({ isActive, dataPresetsState, setDataPreset
     return (
         <View>
             <BouncyCheckbox
-                size={25}
-                fillColor= {userConfig.themColor}
-                unFillColor="#322e2a"
+                size={23}
+                fillColor={userConfig.colors.greenPrimery}
+                unFillColor={userConfig.colors.graySecundary}
                 innerIconStyle={{ borderWidth: 2 }}
                 bounceEffect={1}
                 onPress={() => {
@@ -17,7 +17,7 @@ export default function ToggleButton({ isActive, dataPresetsState, setDataPreset
                 }
                 }
                 isChecked={isActive}
-                size={20} />
+            />
         </View>
     )
 }

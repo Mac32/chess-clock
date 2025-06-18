@@ -5,8 +5,10 @@ import { View } from 'react-native';
 
 import IconMaterialIcons from '@expo/vector-icons/MaterialIcons';
 import ConfigButton from '../components/configButton';
+import ModalEditTime from '../components/modalEditTime';
 import showConfirmDialog from '../components/showConfirmDialog';
 import TimeButton from '../components/timeButton';
+import { userConfig } from '../constants/userConfig';
 import { TiempoContext } from '../context/timeContext';
 import styles from '../styles/styles';
 import changeIconPlayPause from '../utils/changeIconPlayPause';
@@ -41,6 +43,9 @@ export default function App() {
 
   const [memoriPlayer1, setMemoriPlayer1] = useState(false);
   const [memoriPlayer2, setMemoriPlayer2] = useState(false);
+
+  const [modalPlayer1, setModalPlayer1] = useState(false);
+  const [modalPlayer2, setModalPlayer2] = useState(false)
 
   useEffect(() => {
   }, [movePlayer1, movePlayer2])
@@ -114,6 +119,33 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
+
+      {/*Modal player 1*/}
+      {
+        modalPlayer1 ?
+        <ModalEditTime
+          isVisible={modalPlayer1}
+          player={1}
+          setModalPlayer={setModalPlayer1}
+          time={timePlayer1}
+          setTimePlayer={setTimePlayer1}
+        />
+        : null
+      }
+
+      {/*Modal player 2*/}
+      {
+        modalPlayer2 ?
+        
+      <ModalEditTime
+        isVisible={modalPlayer2}
+        player={2}
+        setModalPlayer={setModalPlayer2}
+        time={timePlayer2}
+        setTimePlayer={setTimePlayer2} />
+        : null
+      }
+
       <View style={{ transform: [{ rotate: '180deg' }], width: '100%', backgroundColor: 'red', flex: 1 }}>
         <TimeButton
           title={formatTime(timePlayer1)}
@@ -122,7 +154,9 @@ export default function App() {
           initialTime={formatTime(initialTimePlayer1)}
           movePlayer={movePlayer1}
           contadorPlayer1={contadorPlayer1}
-          contadorPlayer2={contadorPlayer2} />
+          contadorPlayer2={contadorPlayer2}
+          setModalPlayer={setModalPlayer1}
+        />
 
       </View>
 
@@ -131,10 +165,10 @@ export default function App() {
         <View style={styles.menu}>
 
           <ConfigButton title='Reset' onPress={() => showConfirmDialog('Desea reiniciar el reloj?', 'Confirme para reiniciar el reloj', handleReset)}>
-            <IconMaterialIcons name="restart-alt" size={sizeIcons} color={colorIcons} />
+            <IconMaterialIcons name="restart-alt" size={userConfig.sizes.icons} color={userConfig.colors.grayTerciary} />
           </ConfigButton>
           <ConfigButton title='Play/Pause' onPress={() => playPause(contadorPlayer1, contadorPlayer2, setMemoriPlayer1, setMemoriPlayer2, setContadorPlayer1, setContadorPlayer2, memoriPlayer1, memoriPlayer2)}>
-            <IconMaterialIcons name={changeIconPlayPause(contadorPlayer1, contadorPlayer2)} size={sizeIcons + 5} color={colorIcons} />
+            <IconMaterialIcons name={changeIconPlayPause(contadorPlayer1, contadorPlayer2)} size={userConfig.sizes.icons + 5} color={userConfig.colors.grayTerciary} />
           </ConfigButton>
 
         </View>
@@ -146,20 +180,25 @@ export default function App() {
             setContadorPlayer1(false);
             setContadorPlayer2(false);
           }}>
-            <IconMaterialIcons name="edit" size={sizeIcons} color={colorIcons} />
+            <IconMaterialIcons name="edit" size={userConfig.sizes.icons} color={userConfig.colors.grayTerciary} />
           </ConfigButton>
           <ConfigButton title='Sound' onPress={() => { alert('Sound') }}>
-            <IconMaterialIcons name="volume-up" size={sizeIcons} color={colorIcons} />
+            <IconMaterialIcons name="volume-up" size={userConfig.sizes.icons} color={userConfig.colors.grayTerciary} />
           </ConfigButton>
 
         </View>
 
       </View>
-      <TimeButton title={formatTime(timePlayer2)} style={stylePlayer2} onPress={handleInitCounterPlayer1} initialTime={formatTime(initialTimePlayer2)} movePlayer={movePlayer2} contadorPlayer1={contadorPlayer1} contadorPlayer2={contadorPlayer2} />
+      <TimeButton
+        title={formatTime(timePlayer2)}
+        style={stylePlayer2}
+        onPress={handleInitCounterPlayer1}
+        initialTime={formatTime(initialTimePlayer2)}
+        movePlayer={movePlayer2}
+        contadorPlayer1={contadorPlayer1}
+        contadorPlayer2={contadorPlayer2}
+        setModalPlayer={setModalPlayer2} />
 
     </View>
   );
 }
-
-const colorIcons = '#8b8c82';
-const sizeIcons = 30;

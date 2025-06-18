@@ -27,22 +27,22 @@ export default function EditTimeScreen() {
   }, [dataPresetsState])
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#322e2a' }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: userConfig.colors.graySecundary }}>
 
       <View style={styles.navigationBarEditTime}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <ConfigButton title='Back' onPress={() => router.back()}>
-            <IconMaterialIcons name="arrow-back" size={userConfig.sizeIcons} color={userConfig.colorIcons} />
+            <IconMaterialIcons name="arrow-back" size={userConfig.sizes.icons} color={userConfig.colors.grayTerciary} />
           </ConfigButton>
-          <Text style={{ color: userConfig.textColor, fontSize: 20 }}>Time Controlls</Text>
+          <Text style={{ color: userConfig.colors.white, fontSize: userConfig.sizes.font }}>Time Controlls</Text>
         </View>
         <View style={{ flexDirection: 'row' }}>
           <ConfigButton title='Time Edit' onPress={() => alert('edit')}>
-            <IconMaterialIcons name="edit" size={userConfig.sizeIcons} color={userConfig.colorIcons} />
+            <IconMaterialIcons name="edit" size={userConfig.sizes.icons} color={userConfig.colors.grayTerciary} />
           </ConfigButton>
 
           <ConfigButton title='settings' onPress={() => alert('settings')}>
-            <IconMaterialIcons name="settings" size={userConfig.sizeIcons} color={userConfig.colorIcons} />
+            <IconMaterialIcons name="settings" size={userConfig.sizes.icons} color={userConfig.colors.grayTerciary} />
           </ConfigButton>
         </View>
       </View>
