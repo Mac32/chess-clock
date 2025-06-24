@@ -1,53 +1,53 @@
-> Edited for use in IDX on 07/09/12
+# ⏱️ Chess Clock App
 
-# Welcome to your Expo app 👋
+**Chess Clock App** es una aplicación móvil desarrollada con **React Native** pensada para acompañarte en tus partidas de ajedrez, ya sea en torneos, partidas rápidas o sesiones de práctica. Su diseño limpio y funcional te permite concentrarte en el juego sin distracciones.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+---
 
-## Get started
+## 🎯 Características principales
 
-#### Android
+- ⌛ Relojes individuales para cada jugador  
+- ⚙️ Personalización del tiempo inicial y tipo de incremento (Fischer, Bronstein, Delay)  
+- ⏸️ Pausar, reiniciar y cambiar configuración fácilmente  
+- 📱 Interfaz intuitiva y optimizada para dispositivos móviles  
+- 🕐 Modos Blitz, Rápido, Bullet y Personalizado  
+- 📊 Estadísticas y partidas guardadas (en desarrollo)
 
-Android previews are defined as a `workspace.onStart` hook and started as a vscode task when the workspace is opened/started.
+---
 
-Note, if you can't find the task, either:
-- Rebuild the environment (using command palette: `IDX: Rebuild Environment`), or
-- Run `npm run android -- --tunnel` command manually run android and see the output in your terminal. The device should pick up this new command and switch to start displaying the output from it.
-
-In the output of this command/task, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You'll also find options to open the app's developer menu, reload the app, and more.
-
-#### Web
-
-Web previews will be started and managred automatically. Use the toolbar to manually refresh.
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## 🚀 Instalación rápida
 
 ```bash
-npm run reset-project
-```
+git clone https://github.com/Mac32/chess-clock.git
+cd chess-clock
+npm install
+npx expo start
+````
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+> 📱 Necesitas tener instalado [Expo Go](https://expo.dev/client) en tu dispositivo móvil para escanear el código QR y probar la app.
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🛠️ Tecnologías utilizadas
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+* [React Native](https://reactnative.dev/) + [Expo](https://expo.dev/)
+* [Context API](https://reactjs.org/docs/context.html)
+* [AsyncStorage](https://react-native-async-storage.github.io/async-storage/)
+* Hooks personalizados
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
+## 📌 Estado del proyecto
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+🔧 En desarrollo activo — ¡pull requests, issues y sugerencias son bienvenidas!
+🎯 Próximamente:
+
+* Guardado de estadísticas
+* Nuevas animaciones y estilos
+
+---
+
+## 📄 Licencia
+
+Este proyecto está licenciado bajo la [MIT License](LICENSE).
+
