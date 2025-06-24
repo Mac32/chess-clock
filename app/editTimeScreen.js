@@ -24,6 +24,7 @@ export default function EditTimeScreen() {
   } = useContext(TiempoContext);
 
   useEffect(() => {
+    
   }, [dataPresetsState])
 
   return (
@@ -48,7 +49,7 @@ export default function EditTimeScreen() {
       </View>
 
       <View style={{ width: '100%', flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center' }}>
-        <Pressable title='Crear nuevo tiempo' onPress={() => alert('Crear nuevo tiempo')}>
+        <Pressable title='Crear nuevo tiempo' onPress={() => router.push('/customTimeScreen')}>
           <Text style={styles.buttonCreateNewTime}>Crear nuevo tiempo</Text>
         </Pressable>
         <View>
@@ -60,8 +61,7 @@ export default function EditTimeScreen() {
         renderItem={({ item, index }) =>
           <View style={styles.presetTime}>
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-              <Text style={styles.text}>{item.time} min</Text>
-              {item.add !== 0 && <Text style={styles.text}> | {item.add} sec</Text>}
+              <Text style={styles.text}>{item.name}</Text>
             </View>
             <ToggleButton isActive={item.select} index={index} dataPresetsState={dataPresetsState} setDataPresetsState={setDataPresetsState} />
           </View>

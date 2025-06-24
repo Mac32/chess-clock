@@ -28,7 +28,7 @@ export function TiempoProvider({ children }) {
         const initialtime = async () => {
             try {
 
-                getData('initialTime', 600).then(data => {
+                getData('initialTime', 300).then(data => {
                     setTimePlayer1(parseInt(data));
                     setTimePlayer2(parseInt(data));
                     setInitialTimePlayer1(parseInt(data));

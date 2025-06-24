@@ -7,7 +7,7 @@ const setTimeGame = async (dataPresets, setInitialTimePlayer1, setInitialTimePla
   let increment = 0
   dataPresets.map((preset, i) => {
     if (preset.select) {
-      initial = parseInt(preset.time) * 60
+      initial = parseInt(preset.time)
       increment = parseInt(preset.add)
     }
   });

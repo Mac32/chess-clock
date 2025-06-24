@@ -114,8 +114,6 @@ export default function App() {
       setMovePlayer2);
   }
 
-
-
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
@@ -123,27 +121,27 @@ export default function App() {
       {/*Modal player 1*/}
       {
         modalPlayer1 ?
-        <ModalEditTime
-          isVisible={modalPlayer1}
-          player={1}
-          setModalPlayer={setModalPlayer1}
-          time={timePlayer1}
-          setTimePlayer={setTimePlayer1}
-        />
-        : null
+          <ModalEditTime
+            isVisible={modalPlayer1}
+            player={1}
+            setModalPlayer={setModalPlayer1}
+            time={timePlayer1}
+            setTimePlayer={setTimePlayer1}
+          />
+          : null
       }
 
       {/*Modal player 2*/}
       {
         modalPlayer2 ?
-        
-      <ModalEditTime
-        isVisible={modalPlayer2}
-        player={2}
-        setModalPlayer={setModalPlayer2}
-        time={timePlayer2}
-        setTimePlayer={setTimePlayer2} />
-        : null
+
+          <ModalEditTime
+            isVisible={modalPlayer2}
+            player={2}
+            setModalPlayer={setModalPlayer2}
+            time={timePlayer2}
+            setTimePlayer={setTimePlayer2} />
+          : null
       }
 
       <View style={{ transform: [{ rotate: '180deg' }], width: '100%', backgroundColor: 'red', flex: 1 }}>
@@ -174,7 +172,6 @@ export default function App() {
         </View>
 
         <View style={styles.menu}>
-
           <ConfigButton title='Time Edit' onPress={() => {
             router.push('/editTimeScreen');
             setContadorPlayer1(false);
